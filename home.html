@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Authn App</title>
+  <script src="tailwind.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav
+      class="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 w-full z-20 border-b border-gray-200 dark:border-gray-600">
+      <div class="container flex flex-wrap items-center justify-between mx-auto">
+        <a href="/" class="flex items-center">
+          <img src="logo.svg" class="h-6 mr-3 sm:h-9" alt="NoteMate Logo" />
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">NotesMate</span>
+        </a>
+        <div class="flex md:order-2 items-center">
+          <span id="user" class="mr-3"></span>
+          <button onclick="logout()"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Logout
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="p-5 flex flex-col gap-10 items-center">
+    <div class="w-full md:w-3/5 flex flex-col gap-5">
+      <label for="ta-notes" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Take some notes</label>
+      <textarea id="ta-notes" rows="5"
+        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Take some notes..."></textarea>
+      <button onclick="addNote()"
+        class="w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 self-end">
+        Save
+      </button>
+    </div>
+    <hr class="my-2 mx-auto w-48 h-1 bg-gray-100 rounded border-0 md:my-3 dark:bg-gray-700">
+    <div
+      class="container px-10 flex flex-col justify-center items-center md:flex-row md:justify-start md:items-stretch gap-10"
+      id="notes">
+
+    </div>
+  </main>
+  <div id="note"
+    class="hidden block w-[300px] md:w-[200px] max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <p class="font-normal text-gray-700 dark:text-gray-400" id="note-text"></p>
+    </a>
+  </div>
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      getUser();
+      getNotes();
+    });
+  </script>
+</body>
+
+</html>
