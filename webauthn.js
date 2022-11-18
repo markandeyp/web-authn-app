@@ -23,7 +23,7 @@ export function getRegistrationOptions(email, existingCredentials) {
     const options = generateRegistrationOptions({
       rpName: process.env.RP_NAME,
       rpID: process.env.HOSTNAME,
-      userID: randomBytes(32),
+      userID: base64url.encode(randomBytes(32)),
       userName: email,
       timeout: TIMEOUT,
       excludeCredentials,
